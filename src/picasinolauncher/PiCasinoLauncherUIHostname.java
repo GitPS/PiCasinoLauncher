@@ -35,9 +35,9 @@ public class PiCasinoLauncherUIHostname extends javax.swing.JDialog {
 
         labelHost = new javax.swing.JLabel();
         textFieldHost = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        buttonConnect = new javax.swing.JButton();
+        buttonExit = new javax.swing.JButton();
+        buttonClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PiCasino");
@@ -48,30 +48,30 @@ public class PiCasinoLauncherUIHostname extends javax.swing.JDialog {
         textFieldHost.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         textFieldHost.setText("LOCALHOST");
 
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton1.setText("Connect");
-        jButton1.setPreferredSize(new java.awt.Dimension(200, 50));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonConnect.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        buttonConnect.setText("Connect");
+        buttonConnect.setPreferredSize(new java.awt.Dimension(200, 50));
+        buttonConnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonConnectActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton2.setText("Exit");
-        jButton2.setPreferredSize(new java.awt.Dimension(200, 50));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonExit.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        buttonExit.setText("Exit");
+        buttonExit.setPreferredSize(new java.awt.Dimension(200, 50));
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonExitActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton3.setText("Clear");
-        jButton3.setPreferredSize(new java.awt.Dimension(200, 50));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonClear.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        buttonClear.setText("Clear");
+        buttonClear.setPreferredSize(new java.awt.Dimension(200, 50));
+        buttonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                buttonClearActionPerformed(evt);
             }
         });
 
@@ -84,14 +84,14 @@ public class PiCasinoLauncherUIHostname extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonConnect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(labelHost))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textFieldHost))
                 .addContainerGap())
         );
@@ -104,24 +104,24 @@ public class PiCasinoLauncherUIHostname extends javax.swing.JDialog {
                     .addComponent(textFieldHost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void buttonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearActionPerformed
         textFieldHost.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_buttonClearActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonExitActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectActionPerformed
         String host = textFieldHost.getText();
         if(launcher.connectToServer(host)){
             JOptionPane.showMessageDialog(rootPane, "Succesfully Connected!", "Connected", WIDTH);
@@ -131,13 +131,13 @@ public class PiCasinoLauncherUIHostname extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Cannot connect to: " + host, "Unable to connect", WIDTH);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonConnectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton buttonClear;
+    private javax.swing.JButton buttonConnect;
+    private javax.swing.JButton buttonExit;
     private javax.swing.JLabel labelHost;
     private javax.swing.JTextField textFieldHost;
     // End of variables declaration//GEN-END:variables
