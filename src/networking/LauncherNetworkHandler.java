@@ -32,12 +32,11 @@ public class LauncherNetworkHandler {
             /* Connection with a server is established. */
             public void connected(Connection connection) {
                 PiCasinoLauncher.LOGGER.info("Connection with server established.");
-                //client.sendTCP(username);
             }
 
             /* Object received from the server. */
             public synchronized void received(Connection connection, Object object) {
-                if (object instanceof Object) {
+                if (object instanceof User) {
                     // TODO
                     
                 }

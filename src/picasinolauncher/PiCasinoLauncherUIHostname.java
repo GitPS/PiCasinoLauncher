@@ -124,6 +124,7 @@ public class PiCasinoLauncherUIHostname extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String host = textFieldHost.getText();
         if(launcher.connectToServer(host)){
+            JOptionPane.showMessageDialog(rootPane, "Succesfully Connected!", "Connected", WIDTH);
             this.setVisible(false);
             launcher.launchLoginUI();
         }else{
