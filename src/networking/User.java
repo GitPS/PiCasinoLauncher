@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package networking;
 
-/**
- *
- * @author phil
- */
 public class User {
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
+    private boolean authenticated;
 
     /**
      * Create a basic user with only a username and password.
@@ -86,6 +78,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public boolean isAuthenticated(){
+        return authenticated;
+    }
+    
+    public void setAuthenticated(boolean b){
+        authenticated = b;
     }
     
 }
