@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package networking;
 
@@ -13,10 +8,6 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import picasinolauncher.PiCasinoLauncher;
 
-/**
- *
- * @author phil
- */
 public class LauncherNetworkHandler {
     private Client client;
 
@@ -37,8 +28,10 @@ public class LauncherNetworkHandler {
             /* Object received from the server. */
             public synchronized void received(Connection connection, Object object) {
                 if (object instanceof User) {
+                    // TODO  
+                }
+                else if(object instanceof Update){
                     // TODO
-                    
                 }
             }
 
@@ -59,12 +52,6 @@ public class LauncherNetworkHandler {
         }
     }
 
-
-    /**
-    * Transmit and handle an GameEvent.
-    *
-    * @param toSend the GameEvent to transmit.
-    */
     public void send(Object toSend) {
         client.sendTCP(toSend);
     }
