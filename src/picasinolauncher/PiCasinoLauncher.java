@@ -8,6 +8,7 @@ package picasinolauncher;
 
 import java.util.logging.Logger;
 import networking.LauncherNetworkHandler;
+import networking.User;
 
 /**
  *
@@ -15,6 +16,7 @@ import networking.LauncherNetworkHandler;
  */
 public class PiCasinoLauncher {
     private LauncherNetworkHandler network;
+    private User user;
     public static Logger LOGGER= Logger.getLogger("Launcher");
 
     /**
@@ -33,6 +35,7 @@ public class PiCasinoLauncher {
     }
     
     public void launchLoginUI(){
+        user = new User(null, null);
         PiCasinoLauncherUILogin ui = new PiCasinoLauncherUILogin(this);
         /* Display login window */
         ui.setVisible(true);        
@@ -51,6 +54,14 @@ public class PiCasinoLauncher {
     
     public LauncherNetworkHandler getNetworkHandler(){
         return network;
+    }
+    
+    public User getUser(){
+        return user;
+    }
+    
+    public void setUser(User u){
+        user = u;
     }
     
 }
