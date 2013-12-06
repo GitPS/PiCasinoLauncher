@@ -49,4 +49,8 @@ public class PiCasinoLauncher {
         return network.isConnected();
     }
     
+    public LauncherNetworkHandler getNetworkHandler(){
+        return network;
+    }
+    
 }
