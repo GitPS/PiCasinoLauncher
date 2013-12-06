@@ -28,9 +28,11 @@ public class LauncherNetworkHandler {
             /* Object received from the server. */
             public synchronized void received(Connection connection, Object object) {
                 if (object instanceof User) {
+                    PiCasinoLauncher.LOGGER.info("Received a user object from the server.");
                     // TODO  
                 }
                 else if(object instanceof Update){
+                    PiCasinoLauncher.LOGGER.info("Received an update object from the server.");
                     // TODO
                 }
             }
@@ -52,8 +54,14 @@ public class LauncherNetworkHandler {
         }
     }
 
-    public void send(Object toSend) {
+    public synchronized void sendUser(User toSend) {
         client.sendTCP(toSend);
+        PiCasinoLauncher.LOGGER.info("Sending user to server.");
+    }
+    
+    public synchronized void sendUpdate(Update toSend){
+        client.sendTCP(toSend);
+        PiCasinoLauncher.LOGGER.info("Sending udate to server.");        
     }
 
     public boolean isConnected(){

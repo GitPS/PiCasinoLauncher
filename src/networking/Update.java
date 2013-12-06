@@ -4,6 +4,7 @@ package networking;
 public class Update {
     private String serverVersion;
     private String clientVersion;
+    private String updateURL;
     private boolean updateNeeded;
 
     public String getServerVersion() {
@@ -29,4 +30,13 @@ public class Update {
     public void setUpdateNeeded(boolean updateNeeded) {
         this.updateNeeded = updateNeeded;
     }
+
+    public String getUpdateURL() {
+        return updateURL;
+    }
+
+    public void setUpdateURL(String updateURL) {
+        this.updateURL = updateURL;
+    }
 }
+

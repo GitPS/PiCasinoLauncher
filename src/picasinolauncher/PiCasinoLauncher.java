@@ -15,7 +15,7 @@ import networking.User;
  * @author Phil-Custom
  */
 public class PiCasinoLauncher {
-    private LauncherNetworkHandler network;
+    private static LauncherNetworkHandler network;
     private User user;
     public static Logger LOGGER= Logger.getLogger("Launcher");
 
@@ -62,6 +62,5 @@ public class PiCasinoLauncher {
     
     public void setUser(User u){
         user = u;
-    }
-    
+    }    
 }

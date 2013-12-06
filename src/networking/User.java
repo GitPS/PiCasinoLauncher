@@ -79,13 +79,13 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public boolean isAuthenticated(){
         return authenticated;
     }
-    
+
     public void setAuthenticated(boolean b){
         authenticated = b;
     }
-    
+
 }

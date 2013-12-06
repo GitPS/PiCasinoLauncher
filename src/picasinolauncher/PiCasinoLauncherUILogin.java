@@ -9,6 +9,7 @@ package picasinolauncher;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import networking.LauncherNetworkHandler;
 import networking.User;
 
 /**
@@ -174,12 +175,14 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonClearActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        PiCasinoLauncher.LOGGER.info("Attempting to handle a user login.");
         /* Create user object */
         User user = launcher.getUser();
+        LauncherNetworkHandler network = launcher.getNetworkHandler();
         user.setUsername(textFieldUsername.getText());
         user.setPassword(passwordFieldPassword.getText());
         /* Verify login */
-        launcher.getNetworkHandler().send(user);
+        //launcher.getNetworkHandler().sendUser(user);
         try {
             /* Sleep for 5 seconds here to ensure server has time to authenticate */
             Thread.sleep(5000);
