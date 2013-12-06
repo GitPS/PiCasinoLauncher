@@ -6,6 +6,11 @@
 
 package picasinolauncher;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import networking.User;
+
 /**
  *
  * @author Phil-Custom
@@ -169,12 +174,29 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonClearActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        /* Create user object */
+        User user = launcher.getUser();
+        user.setUsername(textFieldUsername.getText());
+        user.setPassword(passwordFieldPassword.getText());
         /* Verify login */
-        // TODO
+        launcher.getNetworkHandler().send(user);
+        try {
+            /* Sleep for 5 seconds here to ensure server has time to authenticate */
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            PiCasinoLauncher.LOGGER.severe("Sleep interrupted!");
+        }
         /* If login was a success, hide this window */
-        this.setVisible(false);
-        /* Launch update UI */
-        launcher.launchUpdateUI(null);
+        if(user.isAuthenticated()){
+            this.setVisible(false);
+            /* Launch update UI */
+            launcher.launchUpdateUI(null);
+        }
+        JOptionPane.showMessageDialog(null, "Login Failed!  Try again.");
+        /* Clear Username */
+        textFieldUsername.setText("");
+        /* Clear Password */
+        passwordFieldPassword.setText("");
     }//GEN-LAST:event_buttonLoginActionPerformed
 
 
