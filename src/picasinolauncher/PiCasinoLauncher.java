@@ -6,6 +6,8 @@
 
 package picasinolauncher;
 
+import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import networking.LauncherNetworkHandler;
 import networking.User;
@@ -17,7 +19,9 @@ import networking.User;
 public class PiCasinoLauncher {
     private static LauncherNetworkHandler network;
     private User user;
-    public static Logger LOGGER= Logger.getLogger("Launcher");
+    private String hostName;
+    private String gameType;
+    public static final Logger LOGGER= Logger.getLogger("Launcher");
 
     /**
      * @param args the command line arguments
@@ -28,6 +32,12 @@ public class PiCasinoLauncher {
         launcher.launchHostnameUI();
     }
     
+    public PiCasinoLauncher(){
+        user = new User("", "");
+        hostName = "LOCALHOST";
+        gameType = "blackjack";        
+    }
+    
     public void launchHostnameUI(){
         PiCasinoLauncherUIHostname ui = new PiCasinoLauncherUIHostname(this);
         /* Display hostname window */
@@ -35,16 +45,20 @@ public class PiCasinoLauncher {
     }
     
     public void launchLoginUI(){
-        user = new User(null, null);
         PiCasinoLauncherUILogin ui = new PiCasinoLauncherUILogin(this);
         /* Display login window */
         ui.setVisible(true);        
     }
     
-    public void launchUpdateUI(String username){
-        PiCasinoLauncherUI ui = new PiCasinoLauncherUI();
+    public void laucnhRegisterUI(){
+        PiCasinoLauncherRegisterUI ui = new PiCasinoLauncherRegisterUI(this);
         /* Displaye update UI */
         ui.setVisible(true);
+    }
+    
+    public void launchPiCasino(){
+        String[] args = {gameType, "client", hostName, user.getUsername()};
+        com.piindustries.picasino.PiCasino.main(args);
     }
     
     public boolean connectToServer(String host){
@@ -62,5 +76,21 @@ public class PiCasinoLauncher {
     
     public void setUser(User u){
         user = u;
-    }    
+    }   
+    
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+    }
 }

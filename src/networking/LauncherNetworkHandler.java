@@ -39,8 +39,7 @@ public class LauncherNetworkHandler {
 
             /* Connection with a server is lost. */
             public void disconnected(Connection connection) {
-                PiCasinoLauncher.LOGGER.severe("Connection with server lost. Program will exit.");
-                System.exit(0);
+                PiCasinoLauncher.LOGGER.severe("Launcher has disconnected from server!");
             }
         }));
 

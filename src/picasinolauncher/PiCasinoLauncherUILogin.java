@@ -18,7 +18,9 @@ import networking.User;
  */
 public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
     
-    PiCasinoLauncher launcher;
+    private boolean skipAuthentication;
+    private boolean isNewUser;
+    private PiCasinoLauncher launcher;
 
     /**
      * Creates new form PiCasinoLauncherUI
@@ -26,6 +28,8 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
      */
     public PiCasinoLauncherUILogin(PiCasinoLauncher l) {
         launcher = l;
+        skipAuthentication = false;
+        isNewUser = false;
         initComponents();
     }
 
@@ -46,6 +50,8 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
         buttonClear = new javax.swing.JButton();
         buttonLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        checkBoxSkipAuth = new javax.swing.JCheckBox();
+        checkBoxRegister = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PiCasino Launcher");
@@ -73,7 +79,6 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
         buttonExit.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         buttonExit.setText("Exit");
         buttonExit.setPreferredSize(new java.awt.Dimension(75, 50));
-        buttonExit.setSize(new java.awt.Dimension(75, 70));
         buttonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExitActionPerformed(evt);
@@ -101,6 +106,20 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("PiCasino");
 
+        checkBoxSkipAuth.setText("Skip Authentication");
+        checkBoxSkipAuth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxSkipAuthActionPerformed(evt);
+            }
+        });
+
+        checkBoxRegister.setText("Register Account");
+        checkBoxRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxRegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,25 +128,35 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passwordFieldPassword))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(passwordFieldPassword))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(checkBoxRegister)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(checkBoxSkipAuth)
+                                        .addGap(48, 48, 48)))))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(106, 106, 106))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(106, 106, 106))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,11 +172,15 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
                     .addComponent(labelUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passwordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(buttonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxSkipAuth)
+                    .addComponent(checkBoxRegister))
                 .addContainerGap())
         );
 
@@ -176,37 +209,63 @@ public class PiCasinoLauncherUILogin extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         PiCasinoLauncher.LOGGER.info("Attempting to handle a user login.");
-        /* Create user object */
+        
+        if(isNewUser){
+            launcher.laucnhRegisterUI();
+            this.setVisible(false);
+            skipAuthentication = true;
+        }
+
+        /* Create User Object */
         User user = launcher.getUser();
-        LauncherNetworkHandler network = launcher.getNetworkHandler();
         user.setUsername(textFieldUsername.getText());
         user.setPassword(passwordFieldPassword.getText());
-        /* Verify login */
-        //launcher.getNetworkHandler().sendUser(user);
-        try {
-            /* Sleep for 5 seconds here to ensure server has time to authenticate */
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            PiCasinoLauncher.LOGGER.severe("Sleep interrupted!");
+        
+        if(!skipAuthentication){
+            LauncherNetworkHandler network = launcher.getNetworkHandler();
+            /* Verify login */
+            //launcher.getNetworkHandler().sendUser(user);
+            try {
+                /* Sleep for 5 seconds here to ensure server has time to authenticate */
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                PiCasinoLauncher.LOGGER.severe("Sleep interrupted!");
+            }
+            /* If login was a success, hide this window */
+            if(user.isAuthenticated()){
+                this.setVisible(false);
+                launcher.setUser(user);
+                /* Launch PiCasino */
+                launcher.launchPiCasino();
+            }
+            JOptionPane.showMessageDialog(null, "Login Failed!  Try again.");
+            /* Clear Username */
+            textFieldUsername.setText("");
+            /* Clear Password */
+            passwordFieldPassword.setText("");     
         }
-        /* If login was a success, hide this window */
-        if(user.isAuthenticated()){
+        
+        if(!isNewUser){
             this.setVisible(false);
-            /* Launch update UI */
-            launcher.launchUpdateUI(null);
+            launcher.launchPiCasino();
         }
-        JOptionPane.showMessageDialog(null, "Login Failed!  Try again.");
-        /* Clear Username */
-        textFieldUsername.setText("");
-        /* Clear Password */
-        passwordFieldPassword.setText("");
     }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void checkBoxSkipAuthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxSkipAuthActionPerformed
+        skipAuthentication = !skipAuthentication;
+    }//GEN-LAST:event_checkBoxSkipAuthActionPerformed
+
+    private void checkBoxRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxRegisterActionPerformed
+        isNewUser = !isNewUser;
+    }//GEN-LAST:event_checkBoxRegisterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClear;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonLogin;
+    private javax.swing.JCheckBox checkBoxRegister;
+    private javax.swing.JCheckBox checkBoxSkipAuth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelUsername;
